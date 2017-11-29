@@ -1,4 +1,5 @@
 # Web-Scraper
+Ari Grayzel web scraper for IB CS using Python 2.7.x
 
 To use, simply download and run the .py file. You can put the .py inside a virtual environment if you want but this is not neccesary.
 Enter the url of the website you wish the scrape. Make sure you surround it in quotation marks so that the program recognizes it as a string. (e.g. "https://youtube.com", NOT just https://youtube.com)
