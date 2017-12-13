@@ -5,6 +5,9 @@ import time
 from datetime import date
 #from datetime import time
 from datetime import datetime
+from bs4 import BeautifulSoup
+import requests
+from twilio.rest import Client
 
 #initialize variables
 start_tags_before = 0
@@ -14,6 +17,12 @@ all_data_after = ""
 data_change = False
 tags_change = False
 time_input_works = False
+
+#Twilio
+account_sid = 'Oh'
+auth_token = 'Youre'
+twilio_phone_number = 'Talking about'
+my_phone_number = 'Wermhat'
 
 #create parser function
 class MyHTMLParser(HTMLParser):
@@ -37,9 +46,11 @@ while time_input_works == False:
             print("Time interval has been accepted.")
             time_input_works = True
         else:
-            print("Time interval that was input was too small.")
+            print("Time interval that was inputted was too small.")
     except Exception:
         print("Input was not understood.")
+
+text = raw_input("Would you like to get a text message if there was a change?")
 
 #run once to establish initial values
 response = urllib2.urlopen(user_url)
@@ -94,6 +105,14 @@ while data_change == False and tags_change == False:
 
 if data_change == True:
 	print("The data has changed")
+	if text.lower() == 'yes' or text.lower() == 'y':
+		body = 'There was a change to the website!'
+		client = Client(account_sid, auth_token)
+        	client.messages.create(
+        		body=body,
+        		to=my_phone_number,
+        		from_=twilio_phone_number)
+		
 if tags_change == True:
 	print("The number of tags has changed")
 
