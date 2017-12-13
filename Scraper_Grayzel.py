@@ -18,11 +18,11 @@ data_change = False
 tags_change = False
 time_input_works = False
 
-#Twilio
+#Twilio variables MUST BE CHANGED FOR PROGRAM TO RUN
 account_sid = 'Oh'
 auth_token = 'Youre'
 twilio_phone_number = 'Talking about'
-my_phone_number = 'Wermhat'
+my_phone_number = 'Worm Hat'
 
 #create parser function
 class MyHTMLParser(HTMLParser):
