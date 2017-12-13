@@ -13,6 +13,7 @@ start_tags_after = 0
 all_data_after = ""
 data_change = False
 tags_change = False
+time_input_works = False
 
 #create parser function
 class MyHTMLParser(HTMLParser):
@@ -27,7 +28,18 @@ parser = MyHTMLParser()
 
 #get user inputs
 user_url = input("What url would you like to scrape? (please enter with quotes surrounding)")
-delay = input("How long would you like to wait in between scrapings? (seconds) IMPORTANT: DO NOT ENTER A NUMBER SMALLER THAN 1")
+
+while time_input_works == False:
+    delay = raw_input("Input time interval you want (input a number greater than 1)")
+    try:
+        delay = float(delay)
+        if(delay > 1):
+            print("Time interval has been accepted.")
+            time_input_works = True
+        else:
+            print("Time interval that was inputted was too small.")
+    except Exception:
+        print("Input was not understood.")
 
 #run once to establish initial values
 response = urllib2.urlopen(user_url)
@@ -38,6 +50,8 @@ start_tags_before = start_tags_after
 #reset 'after' values
 start_tags_after = 0
 all_data_after = ""
+
+
 
 
 #main loop
