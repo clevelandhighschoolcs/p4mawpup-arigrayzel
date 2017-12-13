@@ -37,7 +37,7 @@ while time_input_works == False:
             print("Time interval has been accepted.")
             time_input_works = True
         else:
-            print("Time interval that was inputted was too small.")
+            print("Time interval that was input was too small.")
     except Exception:
         print("Input was not understood.")
 
