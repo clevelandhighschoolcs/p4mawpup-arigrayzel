@@ -30,16 +30,16 @@ parser = MyHTMLParser()
 user_url = input("What url would you like to scrape? (please enter with quotes surrounding)")
 
 while time_input_works == False:
-    delay = raw_input("Input time interval you want (input a number more than 1)")
+    delay = raw_input("Input time interval you want (input a number greater than 1)")
     try:
         delay = float(delay)
         if(delay > 1):
-            print("parameter acceptable. new time interval set.")
+            print("Time interval has been accepted.")
             time_input_works = True
         else:
-            print("parameter too small.")
+            print("Time interval that was inputted was too small.")
     except Exception:
-        print("request not understood")
+        print("Input was not understood.")
 
 #run once to establish initial values
 response = urllib2.urlopen(user_url)
